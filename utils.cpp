@@ -48,17 +48,6 @@ void entering_money_val(double *number, string text){
     }
 }
 
-void enter_preferences(string introduction, vector<string> *preferences ){
-    int number;
-    string preference;
-    entering_int_data(&number, introduction);
-    for (int i=0; i < number; i++){
-        cout<<"Enter preference: ";
-        cin>>preference;
-        preferences->push_back(preference);
-    }
-}
-
 bool checking_money_val(string choice){
     int dots = 0;
     int length = choice.length();
