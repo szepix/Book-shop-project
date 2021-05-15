@@ -1,10 +1,7 @@
+#ifndef SALESMAN_H
+#define SALESMAN_H
 #include <iostream>
 #include <vector>
-
-/*Proszę zaimplementować klasę reprezentującą sprzedawcę w księgarni.
-Sprzedawca cechuje się np. imieniem, nazwiskiem, poziomem uprawnień, doświadczeniem itp.
-oraz zbiorem działów tematycznych, które ma pod opieką.
- Możliwa jest m.in. zmiana cech sprzedawcy oraz obsługiwanych przez niego działów.*/
 using namespace std;
 
 class Salesman
@@ -176,3 +173,4 @@ ostream& operator<<(ostream &strumien, Salesman &obj)
     obj.display_departments();
     return strumien;
 }
+#endif
