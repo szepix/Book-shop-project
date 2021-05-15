@@ -12,7 +12,7 @@ bool Salesman::check_if_same(Salesman &obj, Salesman &obj2)
     if(obj.surname == obj2.surname) checker++;
     if(obj.worker_id == obj2.worker_id) checker++;
     if(obj.permissions == obj2.permissions) checker++;
-    if(obj.seniority == obj2.seniority) checker++;
+    if(obj.experience == obj2.experience) checker++;
     if(obj.salary == obj2.salary) checker++;
     for(int i=0; i<obj2.departments.size(); i++)
     {
@@ -31,7 +31,7 @@ void Salesman::make_same(Salesman &obj)
     surname = obj.surname;
     worker_id = obj.worker_id;
     permissions = obj.permissions;
-    seniority = obj.seniority;
+    experience = obj.experience;
     salary = obj.salary;
     departments = obj.departments;
 }
@@ -57,15 +57,15 @@ void Salesman::set_id(int new_id)
 {
     worker_id = new_id;
 }
-void Salesman::set_permissions(string new_permissions)
+void Salesman::set_permissions(unsigned int new_permissions)
 {
     permissions = new_permissions;
 }
-void Salesman::set_seniority(int new_seniority)
+void Salesman::set_experience(string new_experience)
 {
-    seniority = new_seniority;
+    experience = new_experience;
 }
-void Salesman::set_salary(int new_salary)
+void Salesman::set_salary(double new_salary)
 {
     salary = new_salary;
 }
@@ -85,12 +85,12 @@ void Salesman::remove_department(string department)
         }
     }
 }
-Salesman::Salesman(string name, string surname, int worker_id, string permissions, int seniority, int salary,vector <string> departments) {
+Salesman::Salesman(string name, string surname, int worker_id, unsigned int permissions, string experience, double salary,vector <string> departments) {
     this->name = name;
     this->surname = surname;
     this->worker_id = worker_id;
     this->permissions = permissions;
-    this->seniority = seniority;
+    this->experience = experience;
     this->departments = departments;
     this->salary = salary;
 }
@@ -99,7 +99,7 @@ Salesman::Salesman(Salesman &obj) {
     this->surname = obj.surname;
     this->worker_id = obj.worker_id;
     this->permissions = obj.permissions;
-    this->seniority = obj.seniority;
+    this->experience = obj.experience;
     this->departments = obj.departments;
     this->salary = obj.salary;
 }
@@ -126,7 +126,7 @@ ostream& operator<<(ostream &strumien, Salesman &obj)
     cout<< "Worker's surname is: "<< obj.surname<<endl;
     cout<< "Worker's id is: "<< obj.worker_id<<endl;
     cout<< "Worker's permission is: "<< obj.permissions<<endl;
-    cout<< "Worker's seniority is: "<< obj.seniority<<endl;
+    cout<< "Worker's experience is: "<< obj.experience<<endl;
     cout<< "Worker's salary is: "<< obj.salary<<endl;
     obj.display_departments();
     return strumien;
