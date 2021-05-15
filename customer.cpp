@@ -8,18 +8,14 @@
 
 #include "customer.h"
 
-Customer::Customer(string name, string surname, int cardId, int age, double cash)
+Customer::Customer(string name, string surname, unsigned int cardId, int age) : Person(name, surname, cardId)
 {
-    this->name = name;
-    this->surname = surname;
-    this->cardId = cardId;
     this->age = age;
-    this->cash = cash;
 };
 
 string Customer::to_string() const {
     stringstream ss;
-    ss << "Customer\nname:" << name << "\nsurname: " << surname << "\ncardId: " << cardId<< "\nage: " << age << "\ncash: "<< cash <<" zl"<< endl<< basket << preferences_to_string()<< endl;
+    ss << "Customer\nname:" << name << "\nsurname: " << surname << "\ncardId: " << cardId<< "\nage: " << age <<" zl"<< endl << preferences_to_string()<< endl<< basket <<endl<< ordered_books<<endl;
     return ss.str();
 }
 
@@ -29,8 +25,8 @@ Customer& Customer::operator=(const Customer& c) {
         surname = c.surname;
         cardId = c.cardId;
         age = c.age;
-        cash = c.cash;
         basket = c.basket;
+        ordered_books = c.ordered_books;
         preferences = c.preferences;
     }
     return *this;
@@ -55,6 +51,14 @@ void Customer::add_to_basket(Book& book){
 
 void Customer::remove_from_basket(int book_id){
     basket.delete_book(book_id);
+}
+
+void Customer::add_to_ordered_books(Book& book){
+    ordered_books.add_book(book);
+}
+
+void Customer::remove_from_ordered_books(int book_id){
+    ordered_books.delete_book(book_id);
 }
 
 void Customer::add_preference(string preference){

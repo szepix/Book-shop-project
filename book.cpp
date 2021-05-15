@@ -13,7 +13,7 @@ Book::Book(string title, string author, int id, double price){
 
 string Book::to_string() const {
     stringstream ss;
-    ss << "Book(title: " << title << ", author: " << author << ", price: " << price << " zl , id: " << id << ")";
+    ss << title << " - " << author << "   Price: " << price << " zl ";
     return ss.str();
 }
 
