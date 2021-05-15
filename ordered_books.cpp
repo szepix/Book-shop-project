@@ -1,18 +1,18 @@
 #include <iostream>
-#include "basket.h"
+#include "ordered_books.h"
 #include <map>
 #include <sstream>
 
 using namespace std;
 
-ostream& operator<<(ostream& os, const Basket& basket) {
+ostream& operator<<(ostream& os, const OrderedBooks& basket) {
     os << basket.to_string();
     return os;
 }
 
-string Basket::to_string() const {
+string OrderedBooks::to_string() const {
     stringstream ss;
-    ss << "Basket: \n";
+    ss << "Ordered books: \n";
 
     map<int, Book> books = get_books();
     map<int, Book>::const_iterator it;
