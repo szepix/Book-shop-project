@@ -8,6 +8,7 @@ class Salesman : public Person
 {
 public:
     Salesman(std::string name, std::string surname, unsigned int cardId, std::string permissions, unsigned int experience, double salary,std::vector <std::string> departments);
+    Salesman(){};
     // Salesman(Salesman &obj);
 
     friend std::ostream& operator <<(std::ostream &strumien, Salesman &obj);

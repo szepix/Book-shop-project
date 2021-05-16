@@ -51,6 +51,10 @@ class PersonCol {
         {
             return persons.empty();
         }
+        const map<unsigned int, L>& get_persons() const
+        {
+            return persons;
+        }
     private:
         map<unsigned int, L> persons;
 };

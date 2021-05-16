@@ -4,13 +4,13 @@
 #include <algorithm>
 
 #include "customer.h"
-#include "customer_col.h"
 #include "utils.h"
 #include "salesman.h"
 #include "person_col.h"
 #include "section_col.h"
 #include "section.h"
 #include "books_col.h"
+#include "bookstore.h"
 using namespace std;
 
 
@@ -50,5 +50,9 @@ int main()
     // D.show_all();
     // D.delete_section("XXX");
     // D.show_all();
+    // Bookstore bookshop;
+    // bookshop.set_time(0);
+    // bookshop.change_time(15);
+    // cout<<bookshop.get_time();
     return 0;
 }
