@@ -15,7 +15,7 @@ class Customer : public Person
 {
 public:
 	Customer(string name, string surname, unsigned int cardId, int age);
-	// Customer(const Customer& c) : name(c.name), surname(c.surname), cardId(c.cardId), age(c.age), cash(c.cash), basket(c.basket), preferences(c.preferences) {}
+	// Customer(const Customer& c) : name(c.name), surname(c.surname), cardId(c.cardId), age(c.age), basket(c.basket), preferences(c.preferences), ordered_books(c.ordered_books) {}
 	~Customer() {};
 
 	Customer& operator=(const Customer& c);

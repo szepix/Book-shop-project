@@ -8,13 +8,7 @@ using namespace std;
 
 void Box::add_book(Book& book){
     int bookId = book.getId();
-    if(books.find(bookId) != books.end())
-    {
-        cout << "This number already exists" << endl;
-    }
-    else {
-        books.insert(map<int, Book>::value_type(bookId, book));
-    }
+    books.insert(map<int, Book>::value_type(bookId, book));
 }
 
 void Box::delete_book(int id) {

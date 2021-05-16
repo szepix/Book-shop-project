@@ -1,16 +1,16 @@
 #include <iostream>
 #include <vector>
 #include "salesman.h"
-
+#include <sstream>
 using namespace std;
 
-bool Salesman::check_if_same(Salesman &obj, Salesman &obj2)
+bool Salesman::check_if_same (const Salesman &obj,const Salesman &obj2) const
 {
     bool same = 0;
     int checker = 0;
     if(obj.name == obj2.name) checker++;
     if(obj.surname == obj2.surname) checker++;
-    if(obj.worker_id == obj2.worker_id) checker++;
+    if(obj.cardId == obj2.cardId) checker++;
     if(obj.permissions == obj2.permissions) checker++;
     if(obj.experience == obj2.experience) checker++;
     if(obj.salary == obj2.salary) checker++;
@@ -25,16 +25,16 @@ bool Salesman::check_if_same(Salesman &obj, Salesman &obj2)
     if(checker == (6 + obj2.departments.size())) same = 1;
     return same;
 }
-void Salesman::make_same(Salesman &obj)
-{
-    name = obj.name;
-    surname = obj.surname;
-    worker_id = obj.worker_id;
-    permissions = obj.permissions;
-    experience = obj.experience;
-    salary = obj.salary;
-    departments = obj.departments;
-}
+// void Salesman::make_same(Salesman &obj)
+// {
+//     name = obj.name;
+//     surname = obj.surname;
+//     cardId = obj.cardId;
+//     permissions = obj.permissions;
+//     experience = obj.experience;
+//     salary = obj.salary;
+//     departments = obj.departments;
+// }
 
 void Salesman::display_departments()
 {
@@ -45,23 +45,11 @@ void Salesman::display_departments()
     }
 }
 
-void Salesman::set_name(string new_name)
-{
-    name = new_name;
-}
-void Salesman::set_surname(string new_surname)
-{
-    surname = new_surname;
-}
-void Salesman::set_id(int new_id)
-{
-    worker_id = new_id;
-}
-void Salesman::set_permissions(unsigned int new_permissions)
+void Salesman::set_permissions(string new_permissions)
 {
     permissions = new_permissions;
 }
-void Salesman::set_experience(string new_experience)
+void Salesman::set_experience(unsigned int new_experience)
 {
     experience = new_experience;
 }
@@ -84,50 +72,67 @@ void Salesman::remove_department(string department)
             departments.erase(departments.begin() + i);
         }
     }
-}
-Salesman::Salesman(string name, string surname, int worker_id, unsigned int permissions, string experience, double salary,vector <string> departments) {
-    this->name = name;
-    this->surname = surname;
-    this->worker_id = worker_id;
+};
+Salesman::Salesman(string name, string surname, unsigned int cardId,string permissions, unsigned int experience, double salary,vector <string> departments) : Person(name, surname, cardId) 
+{
     this->permissions = permissions;
     this->experience = experience;
     this->departments = departments;
     this->salary = salary;
+};
+
+// Salesman::Salesman(Salesman &obj)
+// {
+//     this->name = obj.name;
+//     this->surname = obj.surname;
+//     this->cardId = obj.cardId;
+//     this->permissions = obj.permissions;
+//     this->experience = obj.experience;
+//     this->departments = obj.departments;
+//     this->salary = obj.salary;
+// };
+
+string Salesman::to_string() const {
+    stringstream ss;
+    ss<< "Worker's name is: "<< name<<endl;
+    ss<< "Worker's surname is: "<< surname<<endl;
+    ss<< "Worker's id is: "<< cardId<<endl;
+    ss<< "Worker's permission is: "<< permissions<<endl;
+    ss<< "Worker's experience is: "<< experience<<endl;
+    ss<< "Worker's salary is: "<< salary<<endl;
+    return ss.str();
 }
-Salesman::Salesman(Salesman &obj) {
-    this->name = obj.name;
-    this->surname = obj.surname;
-    this->worker_id = obj.worker_id;
-    this->permissions = obj.permissions;
-    this->experience = obj.experience;
-    this->departments = obj.departments;
-    this->salary = obj.salary;
-}
-bool operator != (Salesman &obj, Salesman &obj2)
+bool operator != (const Salesman &obj,const Salesman &obj2)
 {
     if(obj.check_if_same(obj, obj2) == 1) return 0;
     else return 1;
 }
 
 
-bool operator == (Salesman &obj, Salesman &obj2)
+bool operator == (const Salesman &obj,const Salesman &obj2)
 {
     if(obj.check_if_same(obj, obj2)) return 1;
     else return 0;
 }
-Salesman& Salesman::operator = (Salesman &obj)
+
+Salesman& Salesman::operator = (const Salesman &obj)
 {
-    make_same(obj);
+    if(this!=&obj)
+    {
+        name = obj.name;
+        surname = obj.surname;
+        cardId = obj.cardId;
+        permissions = obj.permissions;
+        experience = obj.experience;
+        salary = obj.salary;
+        departments = obj.departments;
+    }
+
     return *this;
 }
+
 ostream& operator<<(ostream &strumien, Salesman &obj)
 {
-    cout<< "Worker's name is: "<< obj.name<<endl;
-    cout<< "Worker's surname is: "<< obj.surname<<endl;
-    cout<< "Worker's id is: "<< obj.worker_id<<endl;
-    cout<< "Worker's permission is: "<< obj.permissions<<endl;
-    cout<< "Worker's experience is: "<< obj.experience<<endl;
-    cout<< "Worker's salary is: "<< obj.salary<<endl;
-    obj.display_departments();
+    strumien << obj.to_string();
     return strumien;
 }

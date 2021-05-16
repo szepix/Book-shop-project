@@ -12,6 +12,7 @@ public:
         this->surname = surname;
         this->cardId = cardId;
     };
+    Person() {};
 	string getName() const { return name; }
 	string getSurname() const { return surname; }
     unsigned int getCardId() const{ return cardId; }
