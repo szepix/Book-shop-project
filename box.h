@@ -10,15 +10,14 @@ using namespace std;
 class Box {
     public:
         void add_book(Book& c);
-        void delete_book(int id);
-        Book& get_book(int id);
-        const map<int, Book>& get_books() const;
-        bool has_book_id(int id);
-        double get_total_price() const;
+        void delete_book(unsigned int id);
+        Book& get_book(unsigned int id);
+        const map<unsigned int, Book>& get_books() const;
+        bool has_book_id(unsigned int id);
         virtual string to_string() const = 0;
         virtual ~Box() {};
-    private:
-        map<int, Book> books;
+    protected:
+        map<unsigned int, Book> books;
 };
 
 #endif

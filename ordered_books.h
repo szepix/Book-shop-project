@@ -13,6 +13,7 @@ class OrderedBooks : public Box
 public:
     virtual string to_string() const;
     friend ostream& operator<<(ostream& os, const OrderedBooks& basket);
+    double get_total_price() const;
 };
 
 #endif

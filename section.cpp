@@ -7,7 +7,7 @@ Section::Section(string name,
                  string position, string symbol, 
                  int bookcase_num, 
                  string supervisor, 
-                 vector <string> books)
+                 BooksCol books)
 {
     this -> name = name;
     this -> description = description;
@@ -18,23 +18,15 @@ Section::Section(string name,
     this -> books = books;
 }
 
-void Section::add_book(string title)
+void Section::add_book(Book book)
 {
-    books.push_back(title);
-    cout<<"The book: "<<title<<" has been added"<<endl;
+    books.add_book(book);
+    cout<<"The book: "<<book.getTitle()<<" has been added"<<endl;
     
 }
-void Section::del_book(string title)
+void Section::del_book(unsigned int id)
 {   
-    if (find(books.begin(), books.end(), title) != books.end())
-    {
-        books.erase(remove(books.begin(), books.end(), title));
-        cout<<"The book: "<<title<<" has been deleted"<<endl;
-    }
-    else
-    {
-        cout << "There is no such a book"<<endl;
-    }
+    books.delete_book(id);
 }
 
 void Section::change_description(string new_description)
@@ -92,31 +84,32 @@ string Section::get_symbol() const
     return symbol;
 }
 
-const vector<string>& Section::get_books() const
+const map<unsigned int, Book>& Section::get_books() const
 {
-    if (books.empty())
-    {
-        cout << "There are no books"<<endl;
+    return books.get_books();
+}
+
+string Section::to_string() const {
+    stringstream ss;
+    ss << "Name: "<< name <<endl;
+    ss << "Description: "<< description<<endl;
+    ss << "Position: "<< position<<endl;
+    ss << "Symbol: "<< symbol<<endl;
+    ss << "Number of bookcases: "<< bookcase_num<<endl;
+    ss << "Supervisor: "<< supervisor<<endl;
+    ss << "Books: \n";
+    map<unsigned int, Book> books = get_books();
+    map<unsigned int, Book>::const_iterator it;
+    for(it = books.cbegin(); it != books.cend(); it++) {
+        ss << it->second<<endl;
     }
-    else
-    {
-        cout<<"Available books: "<<endl;
-        for(int i = 0; i < books.size(); i++)
-        {
-            cout << books[i] << endl;
-        }
-    }
-    return books;
+
+    return ss.str();
 }
 
 ostream& operator << (ostream& output, const Section &s)
 {
-    cout << "Name: "<< s.name <<endl;
-    cout << "Description: "<< s.description<<endl;
-    cout << "Position: "<< s.position<<endl;
-    cout << "Symbol: "<< s.symbol<<endl;
-    cout << "Number of bookcases: "<< s.bookcase_num<<endl;
-    cout << "Supervisor: "<< s.supervisor<<endl;
+    output<<s.to_string();
     return output;
 }
 
@@ -127,8 +120,7 @@ bool operator == (const Section &s1, const Section &s2)
        (s1.position == s2.position) && 
        (s1.symbol == s2.symbol) && 
        (s1.bookcase_num == s2.bookcase_num) && 
-       (s1.supervisor == s2.supervisor) && 
-       (s1.books == s2.books))
+       (s1.supervisor == s2.supervisor))
         {
             cout <<"Sections are the same"<<endl;
             return true;
@@ -147,8 +139,7 @@ bool operator != (const Section &s1, const Section &s2)
        (s1.position == s2.position) && 
        (s1.symbol == s2.symbol) && 
        (s1.bookcase_num == s2.bookcase_num) && 
-       (s1.supervisor == s2.supervisor) && 
-       (s1.books == s2.books))
+       (s1.supervisor == s2.supervisor))
         {
             cout <<"Sections are diffrent"<<endl;
             return false;
@@ -171,6 +162,7 @@ Section& Section::operator=(const Section &s)
         bookcase_num = s.bookcase_num; 
         supervisor = s.supervisor;
         books = s.books;
+        return*this;
     }
     return*this;
 }

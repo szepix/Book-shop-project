@@ -8,11 +8,11 @@ using namespace std;
 
 void Box::add_book(Book& book){
     int bookId = book.getId();
-    books.insert(map<int, Book>::value_type(bookId, book));
+    books.insert(map<unsigned int, Book>::value_type(bookId, book));
 }
 
-void Box::delete_book(int id) {
-    map<int, Book>::iterator it = books.find(id);
+void Box::delete_book(unsigned int id) {
+    map<unsigned int, Book>::iterator it = books.find(id);
     if (it != books.end()) {
         books.erase(it);
     }
@@ -21,24 +21,16 @@ void Box::delete_book(int id) {
     }
 }
 
-Book& Box::get_book(int id) {
+Book& Box::get_book(unsigned int id) {
     return books.find(id)->second;
 }
 
-const map<int, Book>& Box::get_books() const {
+const map<unsigned int, Book>& Box::get_books() const {
     return books;
 }
 
-double Box::get_total_price() const {
-    double sum = 0;
-    map<int, Book>::const_iterator it;
-    for(it = books.cbegin(); it != books.cend(); it++) {
-        sum += it->second.getPrice();
-    }
-    return sum;
-}
 
-bool Box::has_book_id(int id){
+bool Box::has_book_id(unsigned int id){
     return books.find(id) != books.end();
 }
 

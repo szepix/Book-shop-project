@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "person.h"
+#include "person_col.h"
 class Salesman : public Person
 {
 public:

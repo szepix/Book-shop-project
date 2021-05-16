@@ -4,8 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <sstream>
 #include <algorithm>
-
+#include "books_col.h"
 //header działu!
 
 class Section
@@ -16,10 +17,9 @@ class Section
             name = "Unknown";
             description = "Unknown";
             position = "Unknown";
-            symbol = "A";
+            symbol = "Unknown";
             bookcase_num = 0; 
             supervisor = "Unknown";
-            books = {};
         }
 
         Section(std::string name,
@@ -27,7 +27,7 @@ class Section
                 std::string position, 
                 std::string symbol, int bookcase_num, 
                 std::string supervisor, 
-                std::vector <std::string> books);
+                BooksCol books);
 
         Section(const Section &section)
         {
@@ -48,9 +48,9 @@ class Section
 
         Section& operator=(const Section &s);
 
-        void add_book(std::string title);
+        void add_book(Book book);
 
-        void del_book(std::string title);
+        void del_book(unsigned int id);
 
         void change_description(std::string new_description);
 
@@ -70,12 +70,14 @@ class Section
         
         int get_bookcase_num() const;
 
+        std::string to_string() const;
+
         std::string get_symbol() const;
 
-        const std::vector<std::string>& get_books() const;
+        const map<unsigned int, Book>& get_books() const;
 
     protected:
-        std::vector <std::string> books;
+        BooksCol books;
 
         std::string name;
 

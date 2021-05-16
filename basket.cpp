@@ -14,12 +14,21 @@ string Basket::to_string() const {
     stringstream ss;
     ss << "Basket: \n";
 
-    map<int, Book> books = get_books();
-    map<int, Book>::const_iterator it;
+    map<unsigned int, Book> books = get_books();
+    map<unsigned int, Book>::const_iterator it;
     for(it = books.cbegin(); it != books.cend(); it++) {
         ss << it->second<<endl;
     }
 
     ss << "\nTotal price: " << get_total_price()<<" zl"<<endl;
     return ss.str();
+}
+
+double Basket::get_total_price() const {
+    double sum = 0;
+    map<unsigned int, Book>::const_iterator it;
+    for(it = books.cbegin(); it != books.cend(); it++) {
+        sum += it->second.getPrice();
+    }
+    return sum;
 }
