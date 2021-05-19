@@ -9,17 +9,14 @@
 #include "books_col.h"
 //header działu!
 
+using namespace std;
+
 class Section
 {
     public:
-        Section()
-        {
-            name = "Unknown";
-            symbol = "Unknown";
-            supervisor = "Unknown";
-        }
+        Section() {};
 
-        Section(string name, string symbol, string supervisor);
+        Section(string name, string symbol);
 
         Section(const Section &section)
         {
@@ -29,7 +26,7 @@ class Section
             books = section.books;
         }
         
-        friend std::ostream& operator << (std::ostream& output, const Section &s);
+        friend ostream& operator << (ostream& output, const Section &s);
 
         friend bool operator == (const Section &s1, const Section &s2);
 
@@ -39,27 +36,26 @@ class Section
 
         void add_book(Book book);
 
+        void add_supervisor(unsigned int id);
+
         void del_book(unsigned int id);
 
-        void change_symbol(std::string new_symbol);
+        void change_symbol(string new_symbol);
 
-        void change_name(std::string new_name);
+        void change_name(string new_name);
 
-        std::string get_name() const;
+        string get_name() const;
 
-        std::string to_string() const;
+        string to_string() const;
 
-        std::string get_symbol() const;
+        string get_symbol() const;
 
         const map<unsigned int, Book>& get_books() const;
 
     protected:
         BooksCol books;
-
-        std::string name;
-
-        std::string supervisor;
-
-        std::string symbol;
+        string name;
+        vector<unsigned int> supervisor;
+        string symbol;
 };
 #endif

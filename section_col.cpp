@@ -17,7 +17,7 @@ void SectionCol::delete_section(string name) {
         sections.erase(it);
     }
     else {
-        throw logic_error("This section does not exist - " + name);
+        throw logic_error("This section does not exist - " + name+"\n");
     }
 }
 
@@ -26,7 +26,7 @@ Section& SectionCol::get_section(string name) {
         return sections.find(name)->second;
     }
     else {
-        throw logic_error("This section does not exist - " + name);
+        throw logic_error("This section does not exist - " + name+"\n");
     }
 }
 

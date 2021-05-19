@@ -40,10 +40,10 @@ int main()
     // books.add_book(A);
     
     Bookstore Bookshop;
+    Bookshop.read_sections("Sections.csv");
+    Bookshop.read_salesmen("Salesmen.csv");
     Bookshop.read_books("Books.csv");
     Bookshop.read_customer("Customers.csv");
-    Bookshop.read_salesmen("Salesmen.csv");
-
 
     return 0;
 }

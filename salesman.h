@@ -21,9 +21,9 @@ public:
     string get_permissions() const {return permissions;}
 
     unsigned int display_experience() const {return experience;}
-    vector <string> get_departments() {return departments;}
+    vector<string> get_departments() {return departments;}
 
-    Customer get_customer() const {return customer;}
+    const Customer& get_customer() const {return customer;}
     string to_string() const;
 
     void set_permissions(string new_permissions);
@@ -41,7 +41,7 @@ public:
 
 private:
     
-    vector <string> departments;
+    vector<string> departments;
 
     string permissions;
 

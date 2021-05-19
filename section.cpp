@@ -3,18 +3,16 @@
 using namespace std;
 //Dział księgarni!
 Section::Section(string name,
-                 string symbol,
-                 string supervisor)
+                 string symbol)
 {
     this -> name = name;
     this -> symbol = symbol;
-    this -> supervisor = supervisor;
 }
 
 void Section::add_book(Book book)
 {
     books.add_book(book);
-    cout<<"The book: "<<book.getTitle()<<" has been added"<<endl;
+    //cout<<"The book: "<<book.getTitle()<<" has been added"<<endl;
     
 }
 void Section::del_book(unsigned int id)
@@ -44,6 +42,11 @@ string Section::get_symbol() const
     return symbol;
 }
 
+void Section::add_supervisor(unsigned int id) 
+{
+    supervisor.push_back(id);
+}
+
 const map<unsigned int, Book>& Section::get_books() const
 {
     return books.get_books();
@@ -53,7 +56,10 @@ string Section::to_string() const {
     stringstream ss;
     ss << "Name: "<< name <<endl;
     ss << "Symbol: "<< symbol<<endl;
-    ss << "Supervisor: "<< supervisor<<endl;
+    ss << "Supervisor: "<<endl;
+    for (int i=0; i<supervisor.size(); i++) {
+        ss<<supervisor[i]<<endl;
+    }
     ss << "Books: \n";
     map<unsigned int, Book> books = get_books();
     map<unsigned int, Book>::const_iterator it;

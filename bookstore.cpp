@@ -35,9 +35,10 @@ void Bookstore::read_salesmen(string file) {
         string permissions = salesmen_data[i][3];
         unsigned int experience = abs(stoi(salesmen_data[i][4]));
         vector<string> departments;
-        for(int j=5; j<salesmen_data.size(); j++)
+        for(int j=5; j<salesmen_data[i].size(); j++)
         {
             departments.push_back(salesmen_data[i][j]);
+            sections.get_section(salesmen_data[i][j]).add_supervisor(cardId);
         }
         Salesman A(name, surname, cardId, permissions, experience, departments);
         salesmen_database.add_person(A);
@@ -49,8 +50,7 @@ void Bookstore::read_sections(string file) {
     for (int i = 0; i < sections_data.size(); i++) {
         string name = sections_data[i][0];
         string symbol = sections_data[i][1];
-        string supervisor = sections_data[i][2];
-        Section A(name, symbol, supervisor);
+        Section A(name, symbol);
         sections.add_section(A);
     }
 }
