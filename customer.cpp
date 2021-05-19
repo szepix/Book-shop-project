@@ -8,14 +8,14 @@
 
 #include "customer.h"
 
-Customer::Customer(string name, string surname, unsigned int cardId, int age) : Person(name, surname, cardId)
+Customer::Customer(string name, string surname, unsigned int cardId, double money) : Person(name, surname, cardId)
 {
-    this->age = age;
+    this->money = money;
 };
 
 string Customer::to_string() const {
     stringstream ss;
-    ss << "Customer\nname:" << name << "\nsurname: " << surname << "\ncardId: " << cardId<< "\nage: " << age <<" zl"<< endl << preferences_to_string()<< endl<< basket <<endl<< ordered_books<<endl;
+    ss << "Customer\nname:" << name << "\nsurname: " << surname << "\ncardId: " << cardId<< "\nmoney: " << money<<" zl"<< endl << preferences_to_string()<< endl<< basket <<endl<< ordered_books<<endl;
     return ss.str();
 }
 
@@ -24,7 +24,7 @@ Customer& Customer::operator=(const Customer& c) {
         name = c.name;
         surname = c.surname;
         cardId = c.cardId;
-        age = c.age;
+        money = c.money;
         basket = c.basket;
         ordered_books = c.ordered_books;
         preferences = c.preferences;
@@ -33,11 +33,11 @@ Customer& Customer::operator=(const Customer& c) {
 }
 
 bool operator==(const Customer& c1, const Customer& c2){
-    return ((c1.name == c2.name) && (c1.surname == c2.surname) && (c1.cardId == c2.cardId) && (c1.age == c2.age));
+    return ((c1.name == c2.name) && (c1.surname == c2.surname) && (c1.cardId == c2.cardId) && (c1.money == c2.money));
 }
 
 bool operator!=(const Customer& c1, const Customer& c2){
-    return ((c1.name != c2.name) || (c1.surname != c2.surname) || (c1.cardId != c2.cardId) || (c1.age != c2.age));
+    return ((c1.name != c2.name) || (c1.surname != c2.surname) || (c1.cardId != c2.cardId) || (c1.money != c2.money));
 }
 
 ostream& operator<<(ostream& os, const Customer& c){

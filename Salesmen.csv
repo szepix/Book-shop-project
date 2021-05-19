@@ -1,0 +1,6 @@
+name,surname,worker_id,permissions,seniority,departments
+Mateusz,Muranski,1,kierownik,8,fantasy,sport
+Marek,Markiewicz,2,asystent,3,sport,biznes
+Karol,Gol,3,asystent,4,2800,historia,informatyka,biznes
+Kamil,Slimak,4,asystent,6,4150,informatyka,fantasy
+Jakub,Sliwa,5,asystent,2,2100,biznes

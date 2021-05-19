@@ -2,6 +2,7 @@
 #include <iostream>
 #include "section_col.h"
 #include <algorithm>
+#include <stdexcept>
 
 using namespace std;
 
@@ -16,16 +17,39 @@ void SectionCol::delete_section(string name) {
         sections.erase(it);
     }
     else {
-        cout << "This book does not exist" << endl;
+        throw logic_error("This section does not exist - " + name);
     }
 }
 
 Section& SectionCol::get_section(string name) {
-    return sections.find(name)->second;
+    if (is_section(name)) {
+        return sections.find(name)->second;
+    }
+    else {
+        throw logic_error("This section does not exist - " + name);
+    }
 }
 
 const map<string, Section>& SectionCol::get_sections() const {
     return sections;
+}
+
+
+bool SectionCol::is_section(string name)
+{
+    map<string, Section>::iterator it = sections.find(name);
+    if (it != sections.end()) {
+        return true;
+    }
+    return false;
+
+
+    // // map<string, Section>::iterator it;
+    // if (sections.find(name) != sections.end())
+    // {
+    //     return true;
+    // }
+    // return false;
 }
 
 void SectionCol::show_all()
@@ -36,6 +60,9 @@ void SectionCol::show_all()
         cout << it->second<<endl;
     }
 }
+
+
+
 
 
 

@@ -11,6 +11,7 @@ class SectionCol
     public:
     void add_section(Section& c);
     void delete_section(string name);
+    bool is_section(string name);
     Section& get_section(string name);
     const map<string, Section>& get_sections() const;
     void show_all();

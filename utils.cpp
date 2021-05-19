@@ -89,10 +89,9 @@ vector<vector<string>> read_from_file(string file){
     string lineTextValue;
 
     vector<vector<string>> parts = {};
-
+    getline(myFile, lineText);
     if(myFile){
         while (getline(myFile, lineText)) {
-            cout<<lineText;
             vector<string> part;
             stringstream ss;
             ss<<lineText;

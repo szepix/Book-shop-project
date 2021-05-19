@@ -14,19 +14,21 @@ using namespace std;
 class Customer : public Person
 {
 public:
-	Customer(string name, string surname, unsigned int cardId, int age);
+	Customer(string name, string surname, unsigned int cardId, double money);
+	Customer() {};
 	// Customer(const Customer& c) : name(c.name), surname(c.surname), cardId(c.cardId), age(c.age), basket(c.basket), preferences(c.preferences), ordered_books(c.ordered_books) {}
 	~Customer() {};
 
 	Customer& operator=(const Customer& c);
 
-	int getAge() const { return age; }
+	double get_money() const {return money;}
 	const Basket& getBasket() const { return basket; }
 	const vector<string>& getPreferences() const { return preferences; }
 
 	void add_preference(string preference);
 	bool remove_preference(string preference);
 
+	void set_money(double new_money) {money = new_money;};
 	void add_to_basket(Book& book);
 	void remove_from_basket(int book_id);
 
@@ -41,7 +43,7 @@ public:
 	friend ostream& operator<<(ostream& os, const Customer& dt);
 
 private:
-	int age;
+	double money;
 	Basket basket;
 	OrderedBooks ordered_books;
 	vector<string> preferences;

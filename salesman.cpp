@@ -13,7 +13,6 @@ bool Salesman::check_if_same (const Salesman &obj,const Salesman &obj2) const
     if(obj.cardId == obj2.cardId) checker++;
     if(obj.permissions == obj2.permissions) checker++;
     if(obj.experience == obj2.experience) checker++;
-    if(obj.salary == obj2.salary) checker++;
     for(int i=0; i<obj2.departments.size(); i++)
     {
         if(obj.departments.size() != obj2.departments.size()) break;
@@ -22,7 +21,7 @@ bool Salesman::check_if_same (const Salesman &obj,const Salesman &obj2) const
             checker++;
         }
     }
-    if(checker == (6 + obj2.departments.size())) same = 1;
+    if(checker == (5 + obj2.departments.size())) same = 1;
     return same;
 }
 // void Salesman::make_same(Salesman &obj)
@@ -53,9 +52,9 @@ void Salesman::set_experience(unsigned int new_experience)
 {
     experience = new_experience;
 }
-void Salesman::set_salary(double new_salary)
+void Salesman::set_customer(Customer new_customer)
 {
-    salary = new_salary;
+    customer = new_customer;
 }
 void Salesman::add_department(string new_department)
 {
@@ -73,12 +72,11 @@ void Salesman::remove_department(string department)
         }
     }
 };
-Salesman::Salesman(string name, string surname, unsigned int cardId,string permissions, unsigned int experience, double salary,vector <string> departments) : Person(name, surname, cardId) 
+Salesman::Salesman(string name, string surname, unsigned int cardId,string permissions, unsigned int experience, vector <string> departments) : Person(name, surname, cardId) 
 {
     this->permissions = permissions;
     this->experience = experience;
     this->departments = departments;
-    this->salary = salary;
 };
 
 // Salesman::Salesman(Salesman &obj)
@@ -99,7 +97,6 @@ string Salesman::to_string() const {
     ss<< "Worker's id is: "<< cardId<<endl;
     ss<< "Worker's permission is: "<< permissions<<endl;
     ss<< "Worker's experience is: "<< experience<<endl;
-    ss<< "Worker's salary is: "<< salary<<endl;
     return ss.str();
 }
 bool operator != (const Salesman &obj,const Salesman &obj2)
@@ -124,7 +121,6 @@ Salesman& Salesman::operator = (const Salesman &obj)
         cardId = obj.cardId;
         permissions = obj.permissions;
         experience = obj.experience;
-        salary = obj.salary;
         departments = obj.departments;
     }
 

@@ -15,27 +15,16 @@ class Section
         Section()
         {
             name = "Unknown";
-            description = "Unknown";
-            position = "Unknown";
             symbol = "Unknown";
-            bookcase_num = 0; 
             supervisor = "Unknown";
         }
 
-        Section(std::string name,
-                std::string description,
-                std::string position, 
-                std::string symbol, int bookcase_num, 
-                std::string supervisor, 
-                BooksCol books);
+        Section(string name, string symbol, string supervisor);
 
         Section(const Section &section)
         {
             name = section.name;
-            description = section.description;
-            position = section.position;
             symbol = section.symbol;
-            bookcase_num = section.bookcase_num; 
             supervisor = section.supervisor;
             books = section.books;
         }
@@ -52,23 +41,11 @@ class Section
 
         void del_book(unsigned int id);
 
-        void change_description(std::string new_description);
-
-        void change_position(std::string new_position);
-
         void change_symbol(std::string new_symbol);
-
-        void change_bookcase_num(int new_num);
 
         void change_name(std::string new_name);
 
         std::string get_name() const;
-
-        std::string get_description() const;
-
-        std::string get_position() const;
-        
-        int get_bookcase_num() const;
 
         std::string to_string() const;
 
@@ -81,13 +58,7 @@ class Section
 
         std::string name;
 
-        std::string description;
-
-        std::string position;
-
         std::string supervisor;
-
-        int bookcase_num;
 
         std::string symbol;
 };
