@@ -14,8 +14,12 @@
 using namespace std;
 
 
+
+
+
+
 int main()
-{   
+{
     // PersonCol <Customer> A;
     // Customer B("AAAA", "BBB", 15, 30);
     // Customer C("AAAAAAAA", "BBBBBBBBB", 150, 300);
@@ -54,5 +58,19 @@ int main()
     // bookshop.set_time(0);
     // bookshop.change_time(15);
     // cout<<bookshop.get_time();
+
+    Book CEP("CEP","JA",5, 11.21);
+    Book XXX("XXX","JA",6, 21.21);
+
+    read_from_file("plik_bazowy.txt");
+
+    string text;
+    text = CEP.to_string() + "\n";
+    text = text + XXX.to_string();
+
+    write_to_file("plik_koncowy.txt", text);
+
     return 0;
 }
+
+

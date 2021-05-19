@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <sstream>
 #include "utils.h"
 
 using namespace std;
@@ -79,4 +81,39 @@ void enter_option(string text, int* new_choice, int end_range){
         }
         else{cout << "Incorrect value"; }
     }
+}
+
+vector<vector<string>> read_from_file(string file){
+    ifstream myFile(file);
+    string lineText;
+    string lineTextValue;
+
+    vector<vector<string>> parts = {};
+
+    if(myFile){
+        while (getline(myFile, lineText)) {
+            cout<<lineText;
+            vector<string> part;
+            stringstream ss;
+            ss<<lineText;
+            while(getline(ss, lineTextValue, ',')) {
+                part.push_back(lineTextValue);
+            }
+            parts.push_back(part);
+        }
+    }
+
+    myFile.close();
+
+    return parts;
+}
+
+void write_to_file(string file, string text) {
+    ofstream myFile(file);
+    if (myFile) {
+        myFile << text;
+    }
+
+    myFile.close();
+
 }
