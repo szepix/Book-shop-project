@@ -17,7 +17,7 @@ public:
 	Customer(string name, string surname, unsigned int cardId, double money);
 	Customer() {};
 	// Customer(const Customer& c) : name(c.name), surname(c.surname), cardId(c.cardId), age(c.age), basket(c.basket), preferences(c.preferences), ordered_books(c.ordered_books) {}
-	~Customer() {};
+	~Customer() {}
 
 	Customer& operator=(const Customer& c);
 

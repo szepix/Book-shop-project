@@ -58,6 +58,17 @@ void Bookstore::read_sections(string file) {
     }
 }
 
+void Bookstore::add_customer_to_salesman(unsigned int cust_id, unsigned int sal_id)
+{
+    salesmen_shop.get_person(sal_id).set_customer(customers_shop.get_person(cust_id));
+}
+
+void Bookstore::remove_customer_from_salesman(unsigned int sal_id)
+{
+    Customer c;
+    salesmen_shop.get_person(sal_id).set_customer(c);
+}
+
 void Bookstore::read_books(string file) {
     vector<vector<string>> books_data = read_from_file(file);
     for (int i = 0; i < books_data.size(); i++) {

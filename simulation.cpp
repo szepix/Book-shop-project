@@ -37,7 +37,7 @@ void Simulation::select_random_data()
         unsigned int random_number;
         do
         {
-            random_number = rand()%(customer_size-1) + 1;
+            random_number = rand()%(customer_size) + 1;
         }while (bookstore.get_customers_shop().has_id(random_number));
         bookstore.add_customer_to_shop(random_number);
     }
@@ -48,7 +48,7 @@ void Simulation::select_random_data()
         unsigned int random_number;
         do
         {
-            random_number = rand()%(salesmen_size-1) + 1;
+            random_number = rand()%(salesmen_size) + 1;
         }while (bookstore.get_salesmen_shop().has_id(random_number));
         bookstore.add_salesman_to_shop(random_number);
     }
@@ -65,18 +65,21 @@ void Simulation::run()
     for (unsigned int i=0; i< time; i++)
     {
         bool condition = false;
-        typename map<unsigned int, Salesman>::iterator it;
+        typename map<unsigned int, Salesman>::const_iterator it;
         // TODO Gdy liczba salesmen = 0
-        for(it = bookstore.get_salesmen_shop().get_persons().begin(); it != bookstore.get_salesmen_shop().get_persons().end(); it++) {
+        for(it = bookstore.get_salesmen_shop().get_persons().cbegin(); it != bookstore.get_salesmen_shop().get_persons().cend(); it++) {
             unsigned int cust_size = bookstore.get_customers_shop().get_size();
             if (cust_size == 0) {
                 condition = true;
                 break;
             }
             else {
-                unsigned int cust_id = rand()%(cust_size-1) + 1;
+                unsigned int cust_id = rand()%(cust_size) + 1;
+                unsigned int sal_id = it->second.getCardId();
                 // Customer& customer = bookstore.get_customers_shop().get_person(cust_id);
-                it->second.set_customer(bookstore.get_customers_shop().get_person(cust_id));
+                bookstore.add_customer_to_salesman(cust_id, sal_id);
+                //remove customer from list of customers in shop
+                bookstore.remove_customer_from_salesman(sal_id);
             }
 
 
