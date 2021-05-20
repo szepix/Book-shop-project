@@ -72,7 +72,7 @@ void Salesman::remove_department(string department)
         }
     }
 };
-Salesman::Salesman(string name, string surname, unsigned int cardId,string permissions, unsigned int experience, vector <string> departments) : Person(name, surname, cardId) 
+Salesman::Salesman(string name, string surname, unsigned int cardId,string permissions, unsigned int experience, vector <string> departments) : Person(name, surname, cardId)
 {
     this->permissions = permissions;
     this->experience = experience;

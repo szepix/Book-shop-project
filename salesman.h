@@ -15,7 +15,7 @@ public:
 
     friend ostream& operator <<(ostream &strumien, Salesman &obj);
 
-    
+
     bool check_if_same(const Salesman &obj,const Salesman &obj2) const;
     void make_same(Salesman &obj);
     string get_permissions() const {return permissions;}
@@ -40,7 +40,7 @@ public:
     friend ostream& operator<<(ostream& strumien, const Salesman& obj);
 
 private:
-    
+
     vector<string> departments;
 
     string permissions;

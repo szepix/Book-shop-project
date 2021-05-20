@@ -8,54 +8,69 @@ using namespace std;
 
 template <typename L>
 class PersonCol {
-    public:
-        void add_person(L& c)
-        {
-            unsigned int cardId = c.getCardId();
-            if (!has_id(cardId)) {
-                persons.insert(typename map<unsigned int, L>::value_type(cardId, c));
-            }
-            else {
-            cout << "Such a person already exists" << endl;
-            }
-        
+public:
+    void add_person(L& c)
+    {
+        unsigned int cardId = c.getCardId();
+        if (!has_id(cardId)) {
+            persons.insert(typename map<unsigned int, L>::value_type(cardId, c));
         }
-        void delete_person(unsigned int id)
-        {
-            typename map<unsigned int, L>::iterator it = persons.find(id);
-            if (it != persons.end()) {
-                persons.erase(it);
-            }
-            else {
-                cout << "Such a person does not exist" << endl;
-            }
-        }
-        L& get_person(unsigned int id)
-        {
-            return persons.find(id)->second;
-        }
-        void show_all()
-        {
-            cout<<"Persons: "<<endl;
-            typename map<unsigned int, L>::iterator it;
-            for(it = persons.begin(); it != persons.end(); it++) {
-                cout << it->second.to_string()<<endl;
-            }
+        else {
+        cout << "Such a person already exists" << endl;
         }
 
-        bool has_id(unsigned int id)
-        {
-            return persons.find(id) != persons.end();
+    }
+    void delete_person(unsigned int id)
+    {
+        typename map<unsigned int, L>::iterator it = persons.find(id);
+        if (it != persons.end()) {
+            persons.erase(it);
         }
-        bool empty()
-        {
-            return persons.empty();
+        else {
+            cout << "Such a person does not exist" << endl;
         }
-        const map<unsigned int, L>& get_persons() const
-        {
-            return persons;
+    }
+
+    int get_size() const
+    {
+        return persons.size();
+    }
+
+    L& get_person(unsigned int id)
+    {
+        //typename map<unsigned int,L>::iterator it = persons.find(id);
+        // return it->second;
+        return persons.at(id);
+    }
+//https://www.cplusplus.com/reference/map/map/at/
+
+//https://stackoverflow.com/questions/751681/meaning-of-const-last-in-a-function-declaration-of-a-class
+
+    void show_all()
+    {
+        cout<<"Persons: "<<endl;
+        typename map<unsigned int, L>::iterator it;
+        for(it = persons.begin(); it != persons.end(); it++) {
+            cout << it->second.to_string()<<endl;
         }
-    private:
+    }
+
+    bool has_id(unsigned int id) const
+    {
+        return persons.find(id) != persons.end();
+    }
+
+    bool empty() const
+    {
+        return persons.empty();
+    }
+
+    const map<unsigned int, L>& get_persons() const
+    {
+        return persons;
+    }
+
+private:
         map<unsigned int, L> persons;
 };
 

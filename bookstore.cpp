@@ -4,14 +4,15 @@
 #include <stdexcept>
 using namespace std;
 
-void Bookstore::change_time(unsigned int minutes) {
-    int iteration = 0;
-    if(minutes < 20)
-    {
-        throw out_of_range("Minutes should be bigger than 20");
-    }
-    iteration = minutes/20;
-    set_time(iteration);
+void Bookstore::add_customer_to_shop(unsigned int id)
+{
+    customers_shop.add_person(customers_database.get_person(id));
+}
+
+
+void Bookstore::add_salesman_to_shop(unsigned int id)
+{
+    salesmen_shop.add_person(salesmen_database.get_person(id));
 }
 
 void Bookstore::read_customer(string file) {
@@ -20,7 +21,9 @@ void Bookstore::read_customer(string file) {
         string name = c_data[i][0];
         string surname = c_data[i][1];
         unsigned int cardId = abs(stoi(c_data[i][2]));
-        double money = rand()%200 + 20;
+        double money = (double)(rand()%99)/100;
+        money += rand()%200 + 20;
+        money = floor((money * 100) + .5) / 100;
         Customer A(name, surname, cardId, money);
         customers_database.add_person(A);
     }
@@ -62,7 +65,9 @@ void Bookstore::read_books(string file) {
         string author = books_data[i][1];
         unsigned int id = abs(stoi(books_data[i][2]));
         string genre = books_data[i][3];
-        double price = rand()%100 + 10 + (rand()%99)/100;
+        double price = (double)(rand()%99)/100;
+        price += (rand()%100 + 10);
+        price = floor((price * 100) + .5) / 100;
         unsigned int number = rand()%5;
         Book A(title, author, genre, id, price, number);
         try {

@@ -2,6 +2,10 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <stdio.h>
+#include <ctime>
+#include <cstdlib>
+#include <cmath>
 
 
 #include "customer.h"
@@ -13,6 +17,8 @@
 #include "books_col.h"
 #include "bookstore.h"
 #include "book.h"
+#include "simulation.h"
+
 using namespace std;
 
 
@@ -22,30 +28,21 @@ using namespace std;
 
 int main()
 {
-    // bookshop.change_time(15);
-    // cout<<bookshop.get_time();
-    
-    // Book Umberto("siema","JA","jakis tam",6, 21.21, 5);
+    srand(time(NULL));
+    Simulation simulation;
+    simulation.run();
 
-    // vector<vector<string>> a = read_from_file("Salesmans.csv");
-    // cout<< a[0][0]<<endl;
-    // string text;
-    // text = CEP.to_string() + "\n";
-    // text = text + Umberto.to_string();
+    // PersonCol<Customer> col;
+    // Customer c("1", "1", 1, 12.12);
+    // col.add_person(c);
+    // Customer d = col.get_person(1);
+    // double x = 5.12341343524523246436234322342;
 
-    // write_to_file("plik_koncowy.txt", text);
+    // double rounded = floor((x * 100) + .5) / 100;
 
-    //Book CEP("CEP","JA","fantasy", 5, 11.21);
-    // sections.get_section(genre).add_book(A);
-    // books.add_book(A);
-    
-    Bookstore Bookshop;
-    Bookshop.read_sections("Sections.csv");
-    Bookshop.read_salesmen("Salesmen.csv");
-    Bookshop.read_books("Books.csv");
-    Bookshop.read_customer("Customers.csv");
+
+    // cout<<rounded<<endl;
+
 
     return 0;
 }
-
-
