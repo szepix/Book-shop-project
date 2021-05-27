@@ -13,7 +13,7 @@ public:
     {
         unsigned int cardId = c.getCardId();
         if (!has_id(cardId)) {
-            persons.insert(typename map<unsigned int, L>::value_type(cardId, c));
+            people.insert(typename map<unsigned int, L>::value_type(cardId, c));
         }
         else {
         cout << "Such a person already exists" << endl;
@@ -22,9 +22,9 @@ public:
     }
     void delete_person(unsigned int id)
     {
-        typename map<unsigned int, L>::iterator it = persons.find(id);
-        if (it != persons.end()) {
-            persons.erase(it);
+        typename map<unsigned int, L>::iterator it = people.find(id);
+        if (it != people.end()) {
+            people.erase(it);
         }
         else {
             cout << "Such a person does not exist" << endl;
@@ -33,14 +33,14 @@ public:
 
     int get_size() const
     {
-        return persons.size();
+        return people.size();
     }
 
     L& get_person(unsigned int id)
     {
-        //typename map<unsigned int,L>::iterator it = persons.find(id);
+        //typename map<unsigned int,L>::iterator it = people.find(id);
         // return it->second;
-        return persons.at(id);
+        return people.at(id);
     }
 //https://www.cplusplus.com/reference/map/map/at/
 
@@ -48,30 +48,30 @@ public:
 
     void show_all()
     {
-        cout<<"Persons: "<<endl;
+        cout<<"people: "<<endl;
         typename map<unsigned int, L>::iterator it;
-        for(it = persons.begin(); it != persons.end(); it++) {
+        for(it = people.begin(); it != people.end(); it++) {
             cout << it->second.to_string()<<endl;
         }
     }
 
     bool has_id(unsigned int id) const
     {
-        return persons.find(id) != persons.end();
+        return people.find(id) != people.end();
     }
 
     bool empty() const
     {
-        return persons.empty();
+        return people.empty();
     }
 
-    const map<unsigned int, L>& get_persons() const
+    const map<unsigned int, L>& get_people() const
     {
-        return persons;
+        return people;
     }
 
 private:
-        map<unsigned int, L> persons;
+        map<unsigned int, L> people;
 };
 
 #endif

@@ -29,6 +29,11 @@ void Bookstore::read_customer(string file) {
     }
 }
 
+void Bookstore::remove_customer_from_shop(unsigned int id)
+{
+    customers_shop.delete_person(id);
+}
+
 void Bookstore::read_salesmen(string file) {
     vector<vector<string>> salesmen_data = read_from_file(file);
     for (int i = 0; i < salesmen_data.size(); i++) {

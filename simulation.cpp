@@ -39,6 +39,7 @@ void Simulation::select_random_data()
         {
             random_number = rand()%(customer_size) + 1;
         }while (bookstore.get_customers_shop().has_id(random_number));
+        customers_id.push_back(random_number);
         bookstore.add_customer_to_shop(random_number);
     }
 
@@ -50,6 +51,7 @@ void Simulation::select_random_data()
         {
             random_number = rand()%(salesmen_size) + 1;
         }while (bookstore.get_salesmen_shop().has_id(random_number));
+        salesmen_id.push_back(random_number);
         bookstore.add_salesman_to_shop(random_number);
     }
 }
@@ -62,24 +64,27 @@ void Simulation::run()
 {
     stringstream ss;
     load_data_from_files();
+    unsigned int cust_size = bookstore.get_customers_shop().get_size();
     for (unsigned int i=0; i< time; i++)
     {
         bool condition = false;
         typename map<unsigned int, Salesman>::const_iterator it;
         // TODO Gdy liczba salesmen = 0
-        for(it = bookstore.get_salesmen_shop().get_persons().cbegin(); it != bookstore.get_salesmen_shop().get_persons().cend(); it++) {
-            unsigned int cust_size = bookstore.get_customers_shop().get_size();
+        if(bookstore.get_salesmen_shop().get_people().empty()){break;}
+        for(it = bookstore.get_salesmen_shop().get_people().cbegin(); it != bookstore.get_salesmen_shop().get_people().cend(); it++) {
             if (cust_size == 0) {
                 condition = true;
                 break;
             }
             else {
-                unsigned int cust_id = rand()%(cust_size) + 1;
+                unsigned int random_cust_id = rand()%(cust_size);
+                unsigned int cust_id = customers_id[random_cust_id];
+                customers_id.erase(customers_id.begin()+random_cust_id);
+                --cust_size;
                 unsigned int sal_id = it->second.getCardId();
                 // Customer& customer = bookstore.get_customers_shop().get_person(cust_id);
                 bookstore.add_customer_to_salesman(cust_id, sal_id);
-                //remove customer from list of customers in shop
-                bookstore.remove_customer_from_salesman(sal_id);
+                bookstore.remove_customer_from_shop(cust_id);
             }
 
 

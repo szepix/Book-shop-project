@@ -31,6 +31,8 @@ public:
 
 private:
     Bookstore bookstore;
+    vector <unsigned int> customers_id;
+    vector <unsigned int> salesmen_id;
     unsigned int customers_number;
     unsigned int salesmen_number;
     unsigned int time;

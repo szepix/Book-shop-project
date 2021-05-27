@@ -27,6 +27,7 @@ public:
     void read_sections(string file);
     void read_books(string file);
     void add_customer_to_shop(unsigned int id);
+    void remove_customer_from_shop(unsigned int id);
     void add_salesman_to_shop(unsigned int id);
     void add_customer_to_salesman(unsigned int cust_id, unsigned int sal_id);
     void remove_customer_from_salesman(unsigned int sal_id);
