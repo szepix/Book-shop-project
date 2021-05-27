@@ -7,7 +7,7 @@ using namespace std;
 
 
 void Box::add_book(Book& book){
-    int bookId = book.getId();
+    int bookId = book.get_id();
     books.insert(map<unsigned int, Book>::value_type(bookId, book));
 }
 

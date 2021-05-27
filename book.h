@@ -5,33 +5,33 @@
 
 using namespace std;
 
+//Class Book with private variables: title, author, genre, id, price, number
+
 class Book
 {
 public:
     Book(string title, string author, string genre, unsigned int id, double price, unsigned int number);
     ~Book() {};
 
-    string getTitle() const {return title;}
-    string getGenre() const {return genre;}
-    string getAuthor() const {return author;}
-    unsigned int getId() const {return id;}
-    double getPrice() const {return price;}
-    unsigned int getNumber() const {return number;}
+//getters for variables
+    string get_title() const {return title;}
+    string get_genre() const {return genre;}
+    string get_author() const {return author;}
+    unsigned int get_id() const {return id;}
+    double get_price() const {return price;}
+    unsigned int get_number() const {return number;}
 
-    void setTitle(string new_title);
-
-    void setGenre(string new_genre);
-
-    void setAuthor(string new_author);
-
-    void setId(unsigned int new_Id);
-
-    void setPrice(double new_price);
-
-    void setNumber(unsigned int new_number);
+//setters for variables
+    void set_title(string new_title);
+    void set_genre(string new_genre);
+    void set_author(string new_author);
+    void set_id(unsigned int new_Id);
+    void set_price(double new_price);
+    void set_number(unsigned int new_number);
 
     string to_string() const;
 
+//operators overloading
 	friend bool operator==(const Book& c1, const Book& c2);
 	friend ostream& operator<<(ostream& os, const Book& dt);
 

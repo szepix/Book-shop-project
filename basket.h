@@ -8,6 +8,9 @@
 
 using namespace std;
 
+//class Basket - inherits from class Box
+//Contains methods to getting total price and getting receipt
+
 class Basket : public Box
 {
 public:

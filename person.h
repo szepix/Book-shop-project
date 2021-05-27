@@ -5,6 +5,9 @@
 
 using namespace std;
 
+//Class Person which is parent class for: Salesman, Customer
+//Contains protected variables: name, surname, cardId
+
 class Person {
 public:
     Person(string name, string surname, int cardId) {
@@ -13,17 +16,20 @@ public:
         this->cardId = cardId;
     };
     Person() {};
-	string getName() const { return name; }
-	string getSurname() const { return surname; }
-    unsigned int getCardId() const{ return cardId; }
-
-    void setName(string new_name) { name = new_name; }
-	void setSurname(string new_surname) { surname = new_surname; }
-    void setCardId(unsigned int new_cardId) { cardId = new_cardId; }
-
-    virtual string to_string() const = 0;
     virtual ~Person() {};
 
+//getters for variables
+	string get_name() const { return name; }
+	string get_surname() const { return surname; }
+    unsigned int get_card_id() const{ return cardId; }
+
+//setters for variables
+    void set_name(string new_name) { name = new_name; }
+	void set_surname(string new_surname) { surname = new_surname; }
+    void set_card_id(unsigned int new_cardId) { cardId = new_cardId; }
+
+    virtual string to_string() const = 0;
+    
 protected:
     string name;
 	string surname;

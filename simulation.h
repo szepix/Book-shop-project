@@ -14,18 +14,33 @@
 #include "salesman.h"
 using namespace std;
 
+
+// Class Simulation is responsible for running the bookstore simulation. It has private variables such as:
+// - bookstore
+// - customers_id
+// - salesmen_id
+// - customers_number
+// - salesmen_number
+// - time 
+
 class Simulation
 {
 public:
     Simulation() {};
     ~Simulation() {};
+    // running a bookshop simulation
     void run();
+    // loading the settings needed for the simulation
     void load_data_from_files();
+    // loading data about (books, customers, salesmen, sections) from a file needed for simulation
     void load_simulation_data(string file);
+    // getter of an object of the Bookstore class
     const Bookstore& get_bookstore() const {return bookstore;}
     unsigned int get_time() const {return time;}
     void set_time(unsigned int new_time) {time = new_time;}
+    // determining simulation run time
     void change_time(unsigned int minutes);
+    // random determination of the number of customers and salesmen taking part in the simulation and downloading objects to the shop from the database
     void select_random_data();
 
 

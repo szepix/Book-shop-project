@@ -81,7 +81,7 @@ void Simulation::run()
                 unsigned int cust_id = customers_id[random_cust_id];
                 customers_id.erase(customers_id.begin()+random_cust_id);
                 --cust_size;
-                unsigned int sal_id = it->second.getCardId();
+                unsigned int sal_id = it->second.get_card_id();
                 // Customer& customer = bookstore.get_customers_shop().get_person(cust_id);
                 bookstore.add_customer_to_salesman(cust_id, sal_id);
                 bookstore.remove_customer_from_shop(cust_id);

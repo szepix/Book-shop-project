@@ -92,11 +92,11 @@ Salesman::Salesman(string name, string surname, unsigned int cardId,string permi
 
 string Salesman::to_string() const {
     stringstream ss;
-    ss<< "Worker's name is: "<< name<<endl;
-    ss<< "Worker's surname is: "<< surname<<endl;
-    ss<< "Worker's id is: "<< cardId<<endl;
-    ss<< "Worker's permission is: "<< permissions<<endl;
-    ss<< "Worker's experience is: "<< experience<<endl;
+    ss<< "Salesman's name is: "<< name<<endl;
+    ss<< "Salesman's surname is: "<< surname<<endl;
+    ss<< "Salesman's id is: "<< cardId<<endl;
+    ss<< "Salesman's permission is: "<< permissions<<endl;
+    ss<< "Salesman's experience is: "<< experience<<endl;
     return ss.str();
 }
 bool operator != (const Salesman &obj,const Salesman &obj2)
@@ -127,8 +127,8 @@ Salesman& Salesman::operator = (const Salesman &obj)
     return *this;
 }
 
-ostream& operator<<(ostream &strumien, Salesman &obj)
+ostream& operator<<(ostream &output, Salesman &obj)
 {
-    strumien << obj.to_string();
-    return strumien;
+    output << obj.to_string();
+    return output;
 }

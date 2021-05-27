@@ -1,7 +1,7 @@
 #include "section.h"
 
 using namespace std;
-//Dział księgarni!
+
 Section::Section(string name,
                  string symbol)
 {
@@ -12,7 +12,6 @@ Section::Section(string name,
 void Section::add_book(Book book)
 {
     books.add_book(book);
-    //cout<<"The book: "<<book.getTitle()<<" has been added"<<endl;
     
 }
 void Section::del_book(unsigned int id)
@@ -20,16 +19,14 @@ void Section::del_book(unsigned int id)
     books.delete_book(id);
 }
 
-void Section::change_symbol(string new_symbol)
+void Section::set_symbol(string new_symbol)
 {
     symbol = new_symbol;
-    cout<<"The new section symbol is: "<<symbol<<endl;
 }
 
-void Section::change_name(string new_name)
+void Section::set_name(string new_name)
 {
     name = new_name;
-    cout<<"The new section name is:: "<<name<<endl;
 }
 
 string Section::get_name() const

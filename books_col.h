@@ -6,6 +6,9 @@
 #include "box.h"
 #include <sstream>
 
+//Class BooksCol - inherits from class Box
+//Class which is a collection for books
+
 class BooksCol : public Box 
 {
     string to_string() const 

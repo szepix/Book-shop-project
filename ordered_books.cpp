@@ -13,7 +13,7 @@ double OrderedBooks::get_total_price() const {
     double sum = 0;
     map<unsigned int, Book>::const_iterator it;
     for(it = books.cbegin(); it != books.cend(); it++) {
-        sum += it->second.getPrice();
+        sum += it->second.get_price();
     }
     return sum;
 }

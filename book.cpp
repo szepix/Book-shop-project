@@ -28,32 +28,32 @@ ostream& operator<<(ostream& os, const Book& b){
     return os;
 }
 
-void Book::setTitle(string new_title)
+void Book::set_title(string new_title)
 {
     title = new_title;
 }
 
-void Book::setGenre(string new_genre)
+void Book::set_genre(string new_genre)
 {
     genre = new_genre;
 }
 
-void Book::setAuthor(string new_author)
+void Book::set_author(string new_author)
 {
     author = new_author;
 }
 
-void Book::setId(unsigned int new_Id)
+void Book::set_id(unsigned int new_Id)
 {
     id = new_Id;
 }
 
-void Book::setPrice(double new_price)
+void Book::set_price(double new_price)
 {
     price = new_price;
 }
 
-void Book::setNumber(unsigned int new_number)
+void Book::set_number(unsigned int new_number)
 {
     number = new_number;
 }
