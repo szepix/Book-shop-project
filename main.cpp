@@ -30,11 +30,13 @@ int main()
 {
     srand(time(NULL));
     Simulation simulation;
-    // simulation.run();
+    simulation.run();
 
     // PersonCol<Customer> col;
     // Customer c("1", "1", 1, 12.12);
     // col.add_person(c);
+    // c.set_name("xxxxxxx");
+    // col.get_person(1).set_name("aaaaaa");
     // Customer d = col.get_person(1);
     // double x = 5.12341343524523246436234322342;
 

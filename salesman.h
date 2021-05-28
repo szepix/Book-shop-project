@@ -18,17 +18,13 @@ public:
     Salesman(){};
 
     bool check_if_same(const Salesman &obj,const Salesman &obj2) const;
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    void make_same(Salesman &obj); //to potrzebne jeszcze?
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 
     unsigned int display_experience() const {return experience;}
 
 //getters for variables
     string get_permissions() const {return permissions;}
     vector<string> get_departments() {return departments;}
-    const Customer& get_customer() const {return customer;}
+    Customer& get_customer() {return customer;}
 
     string to_string() const;
     void display_departments();
@@ -36,7 +32,7 @@ public:
 //setters for variables
     void set_permissions(string new_permissions);
     void set_experience(unsigned int new_experience);
-    void set_customer(Customer new_customer);
+    void set_customer(Customer& new_customer);
     void add_department(string new_department);
     void replace_departments(vector <string> new_list);
     void remove_department(string department);

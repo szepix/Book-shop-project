@@ -19,6 +19,19 @@ string Book::to_string() const {
     return ss.str();
 }
 
+Book& Book::operator=(const Book& b) {
+    if (this != &b) {
+        title = b.title;
+        author = b.author;
+        genre = b.genre;
+        id = b.id;
+        price = b.price;
+        number = b.number;
+    }
+    return *this;
+}
+
+
 bool operator==(const Book& b1, const Book& b2){
     return (b1.id == b2.id);
 }

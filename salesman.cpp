@@ -24,16 +24,6 @@ bool Salesman::check_if_same (const Salesman &obj,const Salesman &obj2) const
     if(checker == (5 + obj2.departments.size())) same = 1;
     return same;
 }
-// void Salesman::make_same(Salesman &obj)
-// {
-//     name = obj.name;
-//     surname = obj.surname;
-//     cardId = obj.cardId;
-//     permissions = obj.permissions;
-//     experience = obj.experience;
-//     salary = obj.salary;
-//     departments = obj.departments;
-// }
 
 void Salesman::display_departments()
 {
@@ -64,7 +54,7 @@ void Salesman::set_experience(unsigned int new_experience)
     experience = new_experience;
 }
 
-void Salesman::set_customer(Customer new_customer)
+void Salesman::set_customer(Customer &new_customer)
 {
     customer = new_customer;
 }

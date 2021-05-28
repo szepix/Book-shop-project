@@ -20,7 +20,7 @@ double OrderedBooks::get_total_price() const {
 
 string OrderedBooks::to_string() const {
     stringstream ss;
-    ss << "Ordered books: \n";
+    ss << "Ordered books: "<<endl;
 
     map<unsigned int, Book> books = get_books();
     map<unsigned int, Book>::const_iterator it;
@@ -28,6 +28,6 @@ string OrderedBooks::to_string() const {
         ss << it->second<<endl;
     }
 
-    ss << "\nTotal price: " << get_total_price()<<" zl"<<endl;
+    ss << "Total price: " << get_total_price()<<" zl"<<endl;
     return ss.str();
 }

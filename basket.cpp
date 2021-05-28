@@ -12,7 +12,7 @@ ostream& operator<<(ostream& os, const Basket& basket) {
 
 string Basket::to_string() const {
     stringstream ss;
-    ss << "Basket: \n";
+    ss << "\nReceipt: "<<endl;
 
     map<unsigned int, Book> books = get_books();
     map<unsigned int, Book>::const_iterator it;
@@ -20,7 +20,7 @@ string Basket::to_string() const {
         ss << it->second<<endl;
     }
 
-    ss << "\nTotal price: " << get_total_price()<<" zl"<<endl;
+    ss << "Total price: " << get_total_price()<<" zl"<<endl;
     return ss.str();
 }
 

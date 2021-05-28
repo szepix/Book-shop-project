@@ -21,7 +21,8 @@ void Box::delete_book(unsigned int id) {
     }
 }
 
-const Book& Box::get_book(unsigned int id) const {
+
+Book& Box::get_book(unsigned int id) {
     return books.find(id)->second;
 }
 

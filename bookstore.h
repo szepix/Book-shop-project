@@ -19,13 +19,13 @@ public:
     Bookstore(){};
 
     //getters for variables
-    const SectionCol& get_sections() const {return sections;}
-    const BooksCol& get_book_col() const {return books;}
-    const PersonCol<Salesman>& get_salesmen_database() const {return salesmen_database;}
-    const PersonCol<Salesman>& get_salesmen_shop() const {return salesmen_shop;}
-    const PersonCol<Customer>& get_customers_database() const {return customers_database;}
-    const PersonCol<Customer>& get_customers_shop() const {return customers_shop;}
-    const vector<unsigned int> get_books_id() const {return books_id;}
+    SectionCol& get_sections() {return sections;}
+    BooksCol& get_book_col() {return books;}
+    PersonCol<Salesman>& get_salesmen_database() {return salesmen_database;}
+    PersonCol<Salesman>& get_salesmen_shop() {return salesmen_shop;}
+    PersonCol<Customer>& get_customers_database() {return customers_database;}
+    PersonCol<Customer>& get_customers_shop() {return customers_shop;}
+    vector<unsigned int> get_books_id() {return books_id;}
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //const Salesman& get_current_salesman() const {return current_salesman;}
     // void set_current_salesman(Salesman& new_salesman) {current_salesman = new_salesman;}

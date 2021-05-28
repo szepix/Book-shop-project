@@ -34,6 +34,7 @@ public:
 //operators overloading
 	friend bool operator==(const Book& c1, const Book& c2);
 	friend ostream& operator<<(ostream& os, const Book& dt);
+    Book& operator=(const Book& c);
 
 private:
     string genre;

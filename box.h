@@ -18,11 +18,13 @@ class Box {
         void delete_book(unsigned int id);
 
         //getters for variables
-        const Book& get_book(unsigned int id) const;
+        Book& get_book(unsigned int id);
         const map<unsigned int, Book>& get_books() const;
 
         //method for checking if book with specified id exists
         bool has_book_id(unsigned int id);
+
+        bool is_empty() const {return books.size() == 0;}
 
         virtual string to_string() const = 0;
         virtual ~Box() {};

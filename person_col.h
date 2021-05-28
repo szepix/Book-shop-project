@@ -43,10 +43,11 @@ public:
 
     L& get_person(unsigned int id)
     {
-        return people.at(id);
+        return people.find(id)->second;
+        //return people.at(id);
     }
 
-     const map<unsigned int, L>& get_people() const
+    const map<unsigned int, L>& get_people() const
     {
         return people;
     }
