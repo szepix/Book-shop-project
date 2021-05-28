@@ -20,10 +20,12 @@ public:
 
     //getters for variables
     const SectionCol& get_sections() const {return sections;}
+    const BooksCol& get_book_col() const {return books;}
     const PersonCol<Salesman>& get_salesmen_database() const {return salesmen_database;}
     const PersonCol<Salesman>& get_salesmen_shop() const {return salesmen_shop;}
     const PersonCol<Customer>& get_customers_database() const {return customers_database;}
     const PersonCol<Customer>& get_customers_shop() const {return customers_shop;}
+    const vector<unsigned int> get_books_id() const {return books_id;}
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //const Salesman& get_current_salesman() const {return current_salesman;}
     // void set_current_salesman(Salesman& new_salesman) {current_salesman = new_salesman;}
@@ -43,11 +45,10 @@ public:
     void remove_customer_from_salesman(unsigned int sal_id);
 
 
-
-
 private:
     SectionCol sections;
     BooksCol books;
+    vector <unsigned int> books_id;
     PersonCol <Salesman> salesmen_shop;
     PersonCol <Salesman> salesmen_database;
     PersonCol <Customer> customers_shop;

@@ -30,7 +30,7 @@ int main()
 {
     srand(time(NULL));
     Simulation simulation;
-    simulation.run();
+    // simulation.run();
 
     // PersonCol<Customer> col;
     // Customer c("1", "1", 1, 12.12);

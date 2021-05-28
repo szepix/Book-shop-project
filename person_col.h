@@ -16,7 +16,7 @@ public:
 //methods for adding and removing elements from collection
     void add_person(L& c)
     {
-        unsigned int cardId = c.getCardId();
+        unsigned int cardId = c.get_card_id();
         if (!has_id(cardId)) {
             people.insert(typename map<unsigned int, L>::value_type(cardId, c));
         }

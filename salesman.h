@@ -21,7 +21,7 @@ public:
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     void make_same(Salesman &obj); //to potrzebne jeszcze?
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    
+
 
     unsigned int display_experience() const {return experience;}
 
@@ -31,6 +31,7 @@ public:
     const Customer& get_customer() const {return customer;}
 
     string to_string() const;
+    void display_departments();
 
 //setters for variables
     void set_permissions(string new_permissions);
@@ -39,7 +40,8 @@ public:
     void add_department(string new_department);
     void replace_departments(vector <string> new_list);
     void remove_department(string department);
-    void display_departments();
+    void add_book_to_basket(Book &book);
+    void add_book_to_ordered_books(Book &book);
 
 //operators overloading
     Salesman& operator = (const Salesman &obj);

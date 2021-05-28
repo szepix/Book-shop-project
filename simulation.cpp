@@ -11,11 +11,11 @@ void Simulation::load_data_from_files()
 
 void Simulation::change_time(unsigned int minutes) {
     int iteration = 0;
-    if(minutes < 20)
+    if(minutes < 1)
     {
-        throw out_of_range("Minutes should be bigger than 20");
+        throw out_of_range("Minutes should be bigger or equal to 1");
     }
-    iteration = minutes/20;
+    iteration = minutes;
     set_time(iteration);
 }
 
@@ -82,15 +82,54 @@ void Simulation::run()
                 customers_id.erase(customers_id.begin()+random_cust_id);
                 --cust_size;
                 unsigned int sal_id = it->second.get_card_id();
-                // Customer& customer = bookstore.get_customers_shop().get_person(cust_id);
                 bookstore.add_customer_to_salesman(cust_id, sal_id);
                 bookstore.remove_customer_from_shop(cust_id);
+                bool exit=true;
+                while (exit) {
+                    unsigned int random_book = rand()%bookstore.get_books_id().size() + 1;
+                    random_book = bookstore.get_books_id()[random_book];
+                    if (!bookstore.get_book_col().get_book(random_book).get_number() == 0)
+                    {
+                        unsigned int operations = rand()%2 +1;
+                        switch (operations) {
+                            case buy:
+                                operations = rand()%2;
+                                if (operations == decision_no)
+                                {
+                                    //bookstore.get_customers_shop().get_person(cust_id).add_to_basket();
+                                    exit = false;
+                                }
+                                break;
+                            case resign:
+                                exit = false;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        unsigned int operations = rand()%2 +1;
+                        switch (operations) {
+                            case order:
+
+
+
+
+
+
+                                operations = rand()%2;
+                                if (operations == decision_no)
+                                {
+                                    exit = false;
+                                }
+                                break;
+                            case resign:
+                                exit = false;
+                                break;
+                        }
+                    }
+                }
+
             }
-
-
-
-
-
         }
         if (condition) {break;}
     }

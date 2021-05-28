@@ -9,7 +9,6 @@ void Bookstore::add_customer_to_shop(unsigned int id)
     customers_shop.add_person(customers_database.get_person(id));
 }
 
-
 void Bookstore::add_salesman_to_shop(unsigned int id)
 {
     salesmen_shop.add_person(salesmen_database.get_person(id));
@@ -74,6 +73,7 @@ void Bookstore::remove_customer_from_salesman(unsigned int sal_id)
     salesmen_shop.get_person(sal_id).set_customer(c);
 }
 
+
 void Bookstore::read_books(string file) {
     vector<vector<string>> books_data = read_from_file(file);
     for (int i = 0; i < books_data.size(); i++) {
@@ -85,6 +85,7 @@ void Bookstore::read_books(string file) {
         price += (rand()%100 + 10);
         price = floor((price * 100) + .5) / 100;
         unsigned int number = rand()%5;
+        books_id.push_back(id);
         Book A(title, author, genre, id, price, number);
         try {
             sections.get_section(genre).add_book(A);

@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <sstream>
 #include "salesman.h"
+#include "customer.h"
 using namespace std;
 
 
@@ -21,7 +22,18 @@ using namespace std;
 // - salesmen_id
 // - customers_number
 // - salesmen_number
-// - time 
+// - time
+
+enum operations{
+    buy = 1,
+    resign = 2,
+    order = 1,
+    decision_yes = 1,
+    decision_no = 0,
+};
+
+
+
 
 class Simulation
 {

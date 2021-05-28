@@ -44,26 +44,41 @@ void Salesman::display_departments()
     }
 }
 
+void Salesman::add_book_to_basket(Book &book)
+{
+    customer.add_to_basket(book);
+}
+
+void Salesman::add_book_to_ordered_books(Book &book)
+{
+    customer.add_to_ordered_books(book);
+}
+
 void Salesman::set_permissions(string new_permissions)
 {
     permissions = new_permissions;
 }
+
 void Salesman::set_experience(unsigned int new_experience)
 {
     experience = new_experience;
 }
+
 void Salesman::set_customer(Customer new_customer)
 {
     customer = new_customer;
 }
+
 void Salesman::add_department(string new_department)
 {
     departments.push_back(new_department);
 }
+
 void Salesman::replace_departments(std::vector <string> new_list)
 {
     departments = new_list;
 }
+
 void Salesman::remove_department(string department)
 {
     for (int i = 0; i < departments.size(); i++) {
