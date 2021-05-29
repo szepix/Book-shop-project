@@ -33,8 +33,6 @@ enum operations{
 };
 
 
-
-
 class Simulation
 {
 public:
@@ -63,6 +61,7 @@ private:
     unsigned int customers_number;
     unsigned int salesmen_number;
     unsigned int time;
+    stringstream ss;
 };
 
 #endif

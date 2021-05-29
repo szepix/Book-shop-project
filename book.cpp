@@ -15,7 +15,7 @@ Book::Book(string title, string author, string genre, unsigned int id, double pr
 
 string Book::to_string() const {
     stringstream ss;
-    ss << title << " - " << author << "   Price: " << price << " zl ";
+    ss <<"Id: "<<id<<"   Title: "<<title << " - " << author<< "   Price: " << price << " zl "<<"   Number of books: "<<number;
     return ss.str();
 }
 

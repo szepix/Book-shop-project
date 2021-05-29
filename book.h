@@ -11,6 +11,7 @@ class Book
 {
 public:
     Book(string title, string author, string genre, unsigned int id, double price, unsigned int number);
+    Book(){};
     ~Book() {};
 
 //getters for variables

@@ -28,8 +28,9 @@ string Basket::to_string() const {
 double Basket::get_total_price() const {
     double sum = 0;
     map<unsigned int, Book>::const_iterator it;
+
     for(it = books.cbegin(); it != books.cend(); it++) {
-        sum += it->second.get_price();
+        sum += (it->second.get_price())*(it->second.get_number());
     }
     return sum;
 }

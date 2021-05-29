@@ -1,4 +1,4 @@
-name,surname,worker_id,permissions,seniority,departments
+name,surname,worker_id,permissions,experience,departments
 Mateusz,Muranski,1,kierownik,8,fantasy,sport
 Marek,Markiewicz,2,asystent,3,sport,biznes
 Karol,Gol,3,asystent,4,historia,informatyka,biznes

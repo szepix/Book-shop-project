@@ -26,8 +26,8 @@ public:
 
 //getters for variables
 	double get_money() const {return money;}
-	const Basket& get_basket() const { return basket; }
-	const OrderedBooks& get_ordered() const { return ordered_books; }
+	Basket& get_basket() { return basket; }
+	OrderedBooks& get_ordered() { return ordered_books; }
 	const vector<string>& get_preferences() const { return preferences; }
 
 //methods to add or remove specified elements from collection

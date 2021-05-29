@@ -13,14 +13,14 @@ double OrderedBooks::get_total_price() const {
     double sum = 0;
     map<unsigned int, Book>::const_iterator it;
     for(it = books.cbegin(); it != books.cend(); it++) {
-        sum += it->second.get_price();
+        sum += (it->second.get_price())*(it->second.get_number());
     }
     return sum;
 }
 
 string OrderedBooks::to_string() const {
     stringstream ss;
-    ss << "Ordered books: "<<endl;
+    ss << "\nOrdered books: "<<endl;
 
     map<unsigned int, Book> books = get_books();
     map<unsigned int, Book>::const_iterator it;
