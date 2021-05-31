@@ -83,7 +83,6 @@ void Simulation::run()
     {
         bool condition = false;
         typename map<unsigned int, Salesman>::const_iterator it;
-        // TODO Gdy liczba salesmen = 0
         if(bookstore.get_salesmen_shop().get_people().empty()){break;}
         for(it = bookstore.get_salesmen_shop().get_people().cbegin(); it != bookstore.get_salesmen_shop().get_people().cend(); it++) {
             if (cust_size == 0) {

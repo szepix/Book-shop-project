@@ -26,10 +26,6 @@ public:
     PersonCol<Customer>& get_customers_database() {return customers_database;}
     PersonCol<Customer>& get_customers_shop() {return customers_shop;}
     vector<unsigned int> get_books_id() {return books_id;}
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //const Salesman& get_current_salesman() const {return current_salesman;}
-    // void set_current_salesman(Salesman& new_salesman) {current_salesman = new_salesman;}
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     //methods for reading specific elements from file
     void read_customer(string file);

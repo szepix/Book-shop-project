@@ -84,16 +84,6 @@ Salesman::Salesman(string name, string surname, unsigned int cardId,string permi
     this->departments = departments;
 };
 
-// Salesman::Salesman(Salesman &obj)
-// {
-//     this->name = obj.name;
-//     this->surname = obj.surname;
-//     this->cardId = obj.cardId;
-//     this->permissions = obj.permissions;
-//     this->experience = obj.experience;
-//     this->departments = obj.departments;
-//     this->salary = obj.salary;
-// };
 
 string Salesman::to_string() const {
     stringstream ss;

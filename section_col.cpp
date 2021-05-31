@@ -42,14 +42,6 @@ bool SectionCol::is_section(string name)
         return true;
     }
     return false;
-
-
-    // // map<string, Section>::iterator it;
-    // if (sections.find(name) != sections.end())
-    // {
-    //     return true;
-    // }
-    // return false;
 }
 
 void SectionCol::show_all()
