@@ -112,7 +112,7 @@ void Simulation::run()
                     unsigned int random_book = bookstore.get_books_id()[random_book_number];
                     Book &book = bookstore.get_book_col().get_book(random_book);
 
-                    ss<<"Client "<<customer.get_card_id()<<" asked about the book with id " << book.get_id()<<endl;
+                    ss<<"Client with id "<<customer.get_card_id()<<" asked about the book with id " << book.get_id()<<endl;
                     if (!book.get_number() == 0)
                     {
                         unsigned int operations;
@@ -130,18 +130,18 @@ void Simulation::run()
                             case buy:
                             {
                                 if (customer.get_money() < book.get_price()) {
-                                    ss<<"Client "<<customer.get_card_id()<<" couldn't afford the book with id " << book.get_id()<<endl;
+                                    ss<<"Client with id "<<customer.get_card_id()<<" couldn't afford the book with id " << book.get_id()<<endl;
                                     operations = rand()%2;
                                     switch (operations) {
                                         case decision_yes:
                                         {
                                             new_client = false;
-                                            ss<<"Client "<<customer.get_card_id()<<" decided to choose another book."<<endl;
+                                            ss<<"Client with id "<<customer.get_card_id()<<" decided to choose another book."<<endl;
                                             break;
                                         }
                                         case decision_no:
                                         {
-                                            ss<<"Client "<<customer.get_card_id() << " decided not to buy other book."<<endl;
+                                            ss<<"Client with id "<<customer.get_card_id() << " decided not to buy other book."<<endl;
                                             cond = false;
                                             break;
                                         }
@@ -163,11 +163,11 @@ void Simulation::run()
                                     book.set_number(book.get_number()-1);
                                     customer.set_money(customer.get_money() - book.get_price());
                                     operations = rand()%2;
-                                    ss<<"Client "<<customer.get_card_id()<<" bought the book with id "<< book.get_id()<<endl;
+                                    ss<<"Client with id "<<customer.get_card_id()<<" bought the book with id "<< book.get_id()<<endl;
                                     new_client = false;
                                     if (operations == decision_no)
                                     {
-                                        ss<<"Client "<<customer.get_card_id() << " decided to leave the shop after buying book."<<endl;
+                                        ss<<"Client with id "<<customer.get_card_id() << " decided to leave the shop after buying book."<<endl;
                                         cond = false;
                                     }
                                 }
@@ -175,7 +175,7 @@ void Simulation::run()
                             }
                             case resign:
                             {
-                                ss<<"Client "<<customer.get_card_id() << " decided not to buy the book."<<endl;
+                                ss<<"Client with id "<<customer.get_card_id() << " decided not to buy the book."<<endl;
                                 cond = false;
                                 break;
                             }
@@ -207,22 +207,22 @@ void Simulation::run()
                                     customer.add_to_ordered_books(book);
                                     customer.get_ordered().get_book(book.get_id()).set_number(1);
                                 }
-                                ss<<"Client "<<customer.get_card_id()<<" ordered book with id "<<book.get_id()<<endl;
+                                ss<<"Client with id "<<customer.get_card_id()<<" ordered book with id "<<book.get_id()<<endl;
                                 operations = rand()%2;
                                 if (operations == decision_no)
                                 {
-                                    ss<<"Client "<<customer.get_card_id() << " decided to leave the shop after ordering book."<<endl;
+                                    ss<<"Client with id "<<customer.get_card_id() << " decided to leave the shop after ordering book."<<endl;
                                     cond = false;
                                 }
                                 else
                                 {
-                                    ss<<"Client "<<customer.get_card_id()<<" decided to choose another book."<<endl;
+                                    ss<<"Client with id "<<customer.get_card_id()<<" decided to choose another book."<<endl;
                                 }
                                 break;
                             }
                             case resign:
                             {
-                                ss<<"Client "<<customer.get_card_id() << " decided not to order the book."<<endl;
+                                ss<<"Client with id "<<customer.get_card_id() << " decided not to order the book."<<endl;
                                 cond = false;
                                 break;
                             }
