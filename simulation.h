@@ -28,8 +28,8 @@ enum operations{
     buy = 1,
     resign = 2,
     order = 1,
-    decision_yes = 1,
-    decision_no = 0,
+    continue_yes = 1,
+    continue_no = 0,
 };
 
 
@@ -38,7 +38,7 @@ class Simulation
 public:
     Simulation() {};
     ~Simulation() {};
-    // running a bookshop simulation
+    // running the bookstore simulation
     void run();
     // loading the settings needed for the simulation
     void load_data_from_files();

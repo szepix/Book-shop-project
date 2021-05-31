@@ -13,7 +13,6 @@ vector<vector<string>> read_from_file(string file){
 
     vector<vector<string>> parts = {};
     getline(myFile, lineText);
-    // TODO OBSŁUŻYĆ BŁĄD !!!
     if(myFile){
         while (getline(myFile, lineText)) {
             vector<string> part;

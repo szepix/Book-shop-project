@@ -16,6 +16,7 @@ void Bookstore::add_salesman_to_shop(unsigned int id)
 
 void Bookstore::read_customer(string file) {
     vector<vector<string>> c_data = read_from_file(file);
+    if(c_data.size() == 0) {throw invalid_argument("Empty customer database");}
     for (int i = 0; i < c_data.size(); i++) {
         if (c_data[i].size() < 3)
         {
@@ -48,6 +49,7 @@ void Bookstore::remove_customer_from_shop(unsigned int id)
 
 void Bookstore::read_salesmen(string file) {
     vector<vector<string>> salesmen_data = read_from_file(file);
+    if(salesmen_data.size() == 0) {throw invalid_argument("Empty salesmen database");}
     for (int i = 0; i < salesmen_data.size(); i++) {
         if (salesmen_data[i].size() < 6)
         {
@@ -87,6 +89,7 @@ void Bookstore::read_salesmen(string file) {
 
 void Bookstore::read_sections(string file) {
     vector<vector<string>> sections_data = read_from_file(file);
+    if(sections_data.size() == 0) {throw invalid_argument("Empty section database");}
     for (int i = 0; i < sections_data.size(); i++) {
         if (sections_data[i].size() != 2)
         {
@@ -113,6 +116,7 @@ void Bookstore::remove_customer_from_salesman(unsigned int sal_id)
 
 void Bookstore::read_books(string file) {
     vector<vector<string>> books_data = read_from_file(file);
+    if(books_data.size() == 0) {throw invalid_argument("Empty books database");}
     for (int i = 0; i < books_data.size(); i++) {
         if (books_data[i].size() != 4)
         {

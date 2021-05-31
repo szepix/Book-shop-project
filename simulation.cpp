@@ -1,6 +1,7 @@
 #include "simulation.h"
 
 
+//Loading data for simulation
 void Simulation::load_data_from_files()
 {
     bookstore.read_sections("Sections.csv");
@@ -10,7 +11,7 @@ void Simulation::load_data_from_files()
     load_simulation_data("Simulation.csv");
     select_random_data();
 }
-
+//Changind simulation time
 void Simulation::change_time(unsigned int minutes) {
     int iteration = 0;
     if(minutes < 1)
@@ -21,16 +22,29 @@ void Simulation::change_time(unsigned int minutes) {
     set_time(iteration);
 }
 
+//Load starting simulation data
 void Simulation::load_simulation_data(string file)
 {
     vector<vector<string>> sim_data = read_from_file(file);
-    customers_number = abs(stoi(sim_data[0][0]));
-    salesmen_number = abs(stoi(sim_data[0][1]));
-    time = abs(stoi(sim_data[0][2]));
-
+    try
+    {
+        customers_number = abs(stoi(sim_data[0][0]));
+        salesmen_number = abs(stoi(sim_data[0][1]));
+        time = abs(stoi(sim_data[0][2]));
+    }
+    catch(const invalid_argument& e)
+    {
+        throw invalid_argument("Invalid simulation data");
+    }
+    
+    if (salesmen_number == 0)
+    {
+        throw out_of_range("There cannot be less than one salesman");
+    }
 
 }
 
+//Selecting random customers and salesmen for the bookstore
 void Simulation::select_random_data()
 {
     int customer_size = bookstore.get_customers_database().get_size();
@@ -69,12 +83,13 @@ void Simulation::select_random_data()
     }
 }
 
-
+//Full implementation of simulation
 void Simulation::run()
 {
     ss<<endl;
     load_data_from_files();
     unsigned int cust_size = bookstore.get_customers_shop().get_size();
+    //Text for start of the simulation
     ss<<"\n\nStart of simulation"<<endl<<endl;
     ss<<"Simulation time (in iterations): "<<time<<endl;
     ss<<"Number of salesmen in the bookstore: "<<salesmen_number<<endl;
@@ -94,6 +109,7 @@ void Simulation::run()
                 break;
             }
             else {
+                //Selecting random customer from shop for the current salesman
                 unsigned int random_cust_id = rand()%(cust_size);
                 unsigned int cust_id = customers_id[random_cust_id];
                 customers_id.erase(customers_id.begin()+random_cust_id);
@@ -106,6 +122,7 @@ void Simulation::run()
                 ss<<"Salesman with card id "<<salesman.get_card_id()<<" got a new client"<<"    Iteration: "<<i+1<<endl;
                 bool cond=true;
                 bool new_client = true;
+                //Interaction with single customer
                 while (cond) {
                     unsigned int random_book_number = rand()%bookstore.get_books_id().size();
                     unsigned int random_book = bookstore.get_books_id()[random_book_number];
@@ -132,13 +149,13 @@ void Simulation::run()
                                     ss<<"Client with id "<<customer.get_card_id()<<" couldn't afford the book with id " << book.get_id()<<endl;
                                     operations = rand()%2;
                                     switch (operations) {
-                                        case decision_yes:
+                                        case continue_yes:
                                         {
                                             new_client = false;
                                             ss<<"Client with id "<<customer.get_card_id()<<" decided to choose another book."<<endl;
                                             break;
                                         }
-                                        case decision_no:
+                                        case continue_no:
                                         {
                                             ss<<"Client with id "<<customer.get_card_id() << " decided not to buy other book."<<endl;
                                             cond = false;
@@ -164,7 +181,7 @@ void Simulation::run()
                                     operations = rand()%2;
                                     ss<<"Client with id "<<customer.get_card_id()<<" bought the book with id "<< book.get_id()<<endl;
                                     new_client = false;
-                                    if (operations == decision_no)
+                                    if (operations == continue_no)
                                     {
                                         ss<<"Client with id "<<customer.get_card_id() << " decided to leave the shop after buying book."<<endl;
                                         cond = false;
@@ -208,7 +225,7 @@ void Simulation::run()
                                 }
                                 ss<<"Client with id "<<customer.get_card_id()<<" ordered book with id "<<book.get_id()<<endl;
                                 operations = rand()%2;
-                                if (operations == decision_no)
+                                if (operations == continue_no)
                                 {
                                     ss<<"Client with id "<<customer.get_card_id() << " decided to leave the shop after ordering book."<<endl;
                                     cond = false;
