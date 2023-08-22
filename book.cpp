@@ -4,20 +4,9 @@
 
 #include "book.h"
 
-Book::Book(string title, string author, string genre, unsigned int id, double price, unsigned int number){
-    this->title = title;
-    this->author = author;
-    this->genre = genre;
-    this->id = id;
-    this->price = price;
-    this->number = number;
-};
+Book::Book(string title, string author, string genre, unsigned int id, double price, unsigned int number) : title(title), author(author), genre(genre), id(id), price(price), number(number) {}
 
-string Book::to_string() const {
-    stringstream ss;
-    ss <<"Id: "<<id<<"   Title: "<<title << " - " << author<< "   Price: " << price << " zl "<<"   Number of books: "<<number;
-    return ss.str();
-}
+string Book::to_string() const { return "Id: " + std::to_string(id) + "   Title: " + title + " - " + author + "   Price: " + std::to_string(price) + " zl " + "   Number of books: " + std::to_string(number); }
 
 Book& Book::operator=(const Book& b) {
     if (this != &b) {
@@ -32,19 +21,10 @@ Book& Book::operator=(const Book& b) {
 }
 
 
-bool operator==(const Book& b1, const Book& b2){
-    return (b1.id == b2.id);
-}
+friend bool operator==(const Book& b1, const Book& b2) { return (b1.id == b2.id); }
+friend ostream& operator<<(ostream& os, const Book& b) { os << b.to_string(); return os; }
 
-ostream& operator<<(ostream& os, const Book& b){
-    os << b.to_string();
-    return os;
-}
-
-void Book::set_title(string new_title)
-{
-    title = new_title;
-}
+Book& Book::set_title(string new_title) { title = new_title; return *this; }
 
 void Book::set_genre(string new_genre)
 {
