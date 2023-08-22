@@ -58,8 +58,10 @@ private:
     Bookstore bookstore;
     vector <unsigned int> customers_id;
     vector <unsigned int> salesmen_id;
+    vector <unsigned int> looker_customers_id;
     unsigned int customers_number;
     unsigned int salesmen_number;
+    unsigned int looker_customers_number;
     unsigned int time;
     stringstream ss;
 };
