@@ -47,12 +47,29 @@ void Simulation::load_simulation_data(string file)
 //Selecting random customers and salesmen for the bookstore
 void Simulation::select_random_data()
 {
-    int customer_size = bookstore.get_customers_database().get_size();
-    if(customers_number > customer_size)
+    // existing code...
+    for(int i=0; i<salesmen_number;i++)
     {
-        ss<<"Expected number of clients in simulation ("<< customers_number <<") was bigger than number of clients in database. New number of clients in simulation set to maximal!"<<endl;
-        customers_number = customer_size;
+        // existing code...
+    }
 
+    int looker_customer_size = bookstore.get_looker_customers_database().get_size();
+    if(looker_customers_number > looker_customer_size)
+    {
+        ss<<"Expected number of looker clients in simulation ("<< looker_customers_number <<") was bigger than number of looker clients in database. New number of looker clients in simulation set to maximal!"<<endl;
+        looker_customers_number = looker_customer_size;
+    }
+    for(int i=0; i<looker_customers_number;i++)
+    {
+        unsigned int random_number;
+        do
+        {
+            random_number = rand()%(looker_customer_size) + 1;
+        }while (bookstore.get_looker_customers_shop().has_id(random_number));
+        looker_customers_id.push_back(random_number);
+        bookstore.add_looker_customer_to_shop(random_number);
+    }
+}
     }
     for(int i=0; i<customers_number;i++)
     {
